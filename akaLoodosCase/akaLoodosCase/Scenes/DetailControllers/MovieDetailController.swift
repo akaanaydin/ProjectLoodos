@@ -181,6 +181,7 @@ class MovieDetailController: UIViewController {
         // Navigation Bar
         guard let type = detailResults.type else { return }
         navigationItem.title = "\(String(describing: type)) Detail".firstUppercased
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Search", style: .plain, target: self, action: #selector(self.back))
         // Nil Control
         guard let vote = detailResults.imdbRating, let date = detailResults.released, let time = detailResults.runtime else { return }
         // Image
@@ -234,6 +235,11 @@ class MovieDetailController: UIViewController {
         voteLabel.isHidden = status
         voteView.isHidden = status
         informationLabel.isHidden = status
+    }
+    
+    // Navigation Controller Back Button Action
+    @objc func back(){
+        self.navigationController?.pop(transitionType: .reveal, duration: 0.5)
     }
     // Selector for Tap Gesture
     @objc

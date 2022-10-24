@@ -52,7 +52,8 @@ class MovieController: UIViewController {
         // View Model
         viewModel.delegate = self
         // Navigation Bar
-        configureNavigationBar(largeTitleColor: Color.appWhite, backgoundColor: Color.appBlack, tintColor: Color.appWhite, title: "Search", preferredLargeTitle: false)
+        configureNavigationBar(largeTitleColor: Color.appWhite, backgoundColor: Color.appBlack, tintColor: Color.appWhite, title: "Search Movie", preferredLargeTitle: false)
+        self.navigationController?.isNavigationBarHidden = false
         self.navigationItem.setHidesBackButton(true, animated: true)
         navigationItem.searchController = searchController
         // Table View
@@ -110,7 +111,7 @@ extension MovieController: MovieOutput {
     func selectedMovies(movieID: String) {
         viewModel.getMovieDetail(movieImdbId: movieID) { movie in
             guard let movie = movie else { return }
-            self.navigationController?.pushViewController(MovieDetailController(detailResults: movie), animated: true)
+            self.navigationController?.push(viewController: MovieDetailController(detailResults: movie), transitionType: .push, duration: 0.5)
         } onError: { error in
             self.makeAlert(titleInput: "Error", messageInput: error.localizedDescription)
         }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-//MARK: - Navigation Controller Extension
+//MARK: - Navigation Bar Extension
 extension UIViewController {
     // Configure Navigation Bar
     func configureNavigationBar(largeTitleColor: UIColor, backgoundColor: UIColor, tintColor: UIColor, title: String, preferredLargeTitle: Bool) {
@@ -34,26 +34,5 @@ extension UIViewController {
             navigationController?.navigationBar.isTranslucent = false
             navigationItem.title = title
         }
-    }
-    // Present New View Controller
-    func presentDetail(_ viewControllerToPresent: UIViewController) {
-        let navController = UINavigationController(rootViewController: viewControllerToPresent)
-        navController.modalPresentationStyle = .fullScreen
-        let transition = CATransition()
-        transition.duration = 0.35
-        transition.type = CATransitionType.fade
-        transition.subtype = CATransitionSubtype.fromRight
-        self.view.window!.layer.add(transition, forKey: kCATransition)
-        self.navigationController?.present(navController, animated: false, completion: nil)
-    }
-    // Dismiss View Controller
-    func dismissDetail() {
-        let transition = CATransition()
-        transition.duration = 0.35
-        transition.type = CATransitionType.fade
-        transition.subtype = CATransitionSubtype.fromLeft
-        self.view.window!.layer.add(transition, forKey: kCATransition)
-
-        dismiss(animated: false)
     }
 }
