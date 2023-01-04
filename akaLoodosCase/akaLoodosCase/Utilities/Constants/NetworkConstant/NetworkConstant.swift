@@ -10,7 +10,7 @@ extension Constant {
     class NetworkConstant{
         enum SearchMovieServiceEndPoint: String {
             case BASE_URL = "https://www.omdbapi.com"
-            case API_KEY = "apikey=4b0018ac"
+            case API_KEY = "apikey=YOUR_API_KEY"
             
             static func searchMovie(searchMovieName: String) -> String {
                 "\(BASE_URL.rawValue)?s=\(searchMovieName)&\(API_KEY.rawValue)"
